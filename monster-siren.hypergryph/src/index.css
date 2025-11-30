@@ -1,0 +1,212 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Hide scrollbar for all elements */
+.scrollbar-hide {
+  -ms-overflow-style: none;  /* Internet Explorer 10+ */
+  scrollbar-width: none;  /* Firefox */
+}
+
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;  /* Safari and Chrome */
+}
+
+/* Hide scrollbar globally */
+* {
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* Internet Explorer 10+ */
+}
+
+*::-webkit-scrollbar {
+  display: none; /* Safari and Chrome */
+}
+
+/* Full page scroll styles - Fixed */
+.fullpage-container {
+  height: 100vh;
+  overflow-y: scroll;
+  scroll-snap-type: y mandatory;
+  scroll-behavior: smooth;
+  position: relative;
+}
+
+.fullpage-section {
+  height: 100vh;
+  width: 100%;
+  scroll-snap-align: start;
+  scroll-snap-stop: always;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  flex-shrink: 0;
+  box-sizing: border-box;
+}
+
+/* Ensure sections don't overlap */
+.fullpage-section:not(:last-child) {
+  margin-bottom: 0;
+}
+
+/* Smooth scroll behavior */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Section transitions */
+.section-transition {
+  transition: all 0.5s ease-in-out;
+}
+
+/* Active section indicator */
+.section-indicator {
+  position: fixed;
+  right: 20px;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 1000;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+/* Fix for content overflow */
+.fullpage-section > div {
+  width: 100%;
+  max-width: 100%;
+  overflow-x: hidden;
+}
+
+/* Ensure proper spacing */
+.fullpage-section .w-full {
+  width: 100% !important;
+}
+
+/* Fix for flex container */
+.fullpage-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.fullpage-section {
+  flex: 0 0 100vh;
+}
+
+/* Music grid specific styles - Monster Siren exact sizing */
+.music-grid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  grid-template-rows: repeat(2, 1fr);
+  gap: 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 2rem;
+}
+
+/* Individual music card sizing */
+.music-card {
+  width: 100%;
+  max-width: 200px;
+  margin: 0 auto;
+}
+
+.music-card img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+/* Responsive music grid */
+@media (max-width: 1200px) {
+  .music-grid {
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: repeat(3, 1fr);
+    gap: 1.5rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .music-grid {
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(4, 1fr);
+    gap: 1rem;
+    padding: 0 1rem;
+  }
+  
+  .music-card img {
+    height: 150px;
+  }
+}
+
+@media (max-width: 640px) {
+  .music-grid {
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(5, 1fr);
+    gap: 0.75rem;
+  }
+  
+  .music-card img {
+    height: 120px;
+  }
+}
+
+/* AnimatedContent Animation Styles */
+@keyframes slideInUp {
+  from {
+    opacity: 0;
+    transform: translateY(2rem);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes scaleIn {
+  from {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.animate-in {
+  animation: slideInUp 0.7s ease-out forwards;
+}
+
+.animate-in.fade {
+  animation: fadeIn 0.7s ease-out forwards;
+}
+
+.animate-in.scale {
+  animation: scaleIn 0.7s ease-out forwards;
+}
+
+/* Stagger animation delays */
+.animate-in:nth-child(1) { animation-delay: 0.1s; }
+.animate-in:nth-child(2) { animation-delay: 0.2s; }
+.animate-in:nth-child(3) { animation-delay: 0.3s; }
+.animate-in:nth-child(4) { animation-delay: 0.4s; }
+.animate-in:nth-child(5) { animation-delay: 0.5s; }
+.animate-in:nth-child(6) { animation-delay: 0.6s; }
+.animate-in:nth-child(7) { animation-delay: 0.7s; }
+.animate-in:nth-child(8) { animation-delay: 0.8s; }
+.animate-in:nth-child(9) { animation-delay: 0.9s; }
+.animate-in:nth-child(10) { animation-delay: 1s; }
+
